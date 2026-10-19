@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Header } from "./Header";
 
 export const Docs = () => {
     const [read, setRead] = useState(0);
@@ -20,10 +21,7 @@ export const Docs = () => {
     return (
         <div className="flex items-end justify-between px-20 pt-10">
         <div>
-          <header>
-            <h2 className="text-5xl font-bold">Your first repository</h2>
-            <p className="mt-4 text-2xl">Four commands to put your project on GitHub.</p>
-          </header>
+          <Header />
           <div className="mt-6 flex gap-4">
             <button
               className="cursor-pointer rounded-lg bg-[#5C766D] px-8 py-3 text-xl font-bold text-[#EDE9E6]"
