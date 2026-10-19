@@ -1,52 +1,36 @@
 import { useState } from "react";
-import { StatCard } from "./StatCard";
 
 export const Feedback = () => {
-    const [read, setRead] = useState(0);
-    const [bookmarks, setBookmarks] = useState(0);
+    const [yes, setYes] = useState(0);
+    const [no, setNo] = useState(0);
 
-    function handleRead() {
-    setRead(read + 1);
+    function handleYes() {
+    setYes(yes + 1);
     }
 
-    function handleBookmark() {
-    setBookmarks(bookmarks + 1);
+    function handleNo() {
+    setNo(no + 1);
     }
 
-    function handleReset() {
-    setRead(0);
-    setBookmarks(0);
+    function handleClear() {
+    setYes(0);
+    setNo(0);
     }
 
     return (
-        <div className="flex items-end justify-between px-20 pt-10">
-            <div className="mt-6 flex gap-4">
-                <header>Was this helpful?</header>
-                <button
-                className="cursor-pointer rounded-lg bg-[#5C766D] px-8 py-3 text-xl font-bold text-[#EDE9E6]"
-                onClick={handleRead}
-                >
-                Yes
-                </button>
-                <button
-                className="cursor-pointer rounded-lg bg-[#C9996B] px-8 py-3 text-xl font-bold text-[#5C4F4A]"
-                onClick={handleBookmark}
-                >
-                No
-                </button>
-                <button
-                className="cursor-pointer rounded-lg border-2 border-[#5C4F4A] px-8 py-3 text-xl font-bold"
-                onClick={handleReset}
-                >
-                Reset
-                </button>
+        <div className="mx-20 mt-2 flex items-center justify-between self-start rounded-xl bg-[#5C4F4A] p-6 text-[#EDE9E6]">
+            <div className="flex items-center gap-4">
+                <p className="text-2xl">Was this helpful?</p>
+                <button className="cursor-pointer rounded-lg bg-[#5C766D] px-6 py-2 text-xl font-bold" onClick={handleYes}>Yes</button>
+                <button className="cursor-pointer rounded-lg bg-[#C9996B] px-6 py-2 text-xl font-bold text-[#5C4F4A]" onClick={handleNo}>No</button>
             </div>
-
-            <div className="flex gap-6">
-                <StatCard value={read} label="Yes" />
-                <StatCard value={bookmarks} label="No" />
+            <div className="flex items-center gap-4">
+                <p className="text-2xl">Reset</p>
+                <button className="cursor-pointer rounded-lg border-2 border-[#EDE9E6] px-6 py-2 text-xl font-bold" onClick={handleClear}>Clear</button>
             </div>
+            <p className="text-2xl">
+                <span className="font-bold">{yes} out of {no} found this helpful</span>
+            </p>
         </div>
-
     )
 }
